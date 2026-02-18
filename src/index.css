@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+  --color-main: var(--bg-primary);
+  --color-alt: var(--bg-secondary);
+  --color-content: var(--text-primary);
+  --color-subtle: var(--text-secondary);
+  --color-border: var(--border-color);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F0F0F0;
+  --text-primary: #000000;
+  --text-secondary: #444444;
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] {
+  --bg-primary: #000000;
+  --bg-secondary: #111111;
+  --text-primary: #FFFFFF;
+  --text-secondary: #BBBBBB;
+  --glass-bg: rgba(0, 0, 0, 0.9);
+  --border-color: rgba(255, 255, 255, 0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.section-padding {
+  @apply py-24 px-6 md:px-12 lg:px-24;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto;
+}
+
+.heading-xl {
+  @apply text-5xl md:text-8xl font-bold tracking-tighter;
+}
+
+.text-subtle {
+  color: var(--text-secondary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.transition-standard {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Custom Utilities */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-secondary);
+}
+
+.btn-secondary:active {
+  transform: scale(0.95);
+}
